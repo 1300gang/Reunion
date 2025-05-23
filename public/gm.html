@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head><meta charset="UTF-8"><title>Maître du Jeu</title></head>
+<body id="gm">
+  <h1>Maître du Jeu</h1>
+  <label>Nom du lobby : <input id="lobbyName" /></label>
+  <button id="createLobbyBtn">Créer</button>
+  <div id="linkContainer" style="display:none;">
+    <p>
+      Invitez les joueurs :
+      <input id="lobbyLink" type="text" readonly style="width: 80%;" />
+      <button id="copyBtn">📋 Copier</button>
+    </p>
+    <button id="startGameBtn">Démarrer</button>
+    <button id="nextQuestionBtn">Question suivante</button>
+    <h3>Joueurs</h3>
+    <div id="players"></div>
+    <h3>Réponses</h3>
+    <div id="answers"></div>
+    <button id="generateCsvBtn">Générer le CSV</button>
+    <a id="csvLink" href="#" download style="display:none;">📄 Télécharger</a>
+  </div>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
