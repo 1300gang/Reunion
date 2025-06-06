@@ -1,10 +1,15 @@
 {
-  "index": "1",
-  "question": "Quel est le bon comportement à adopter à un feu orange fixe ?",
+  "id": "question1",
+  "context": "Mya et Yanis sortent du lycée et discutent de leur journée. Mya a eu cours sur les stéréotypes.",
+  "question": "Yanis demande à Mya ce qu'est un stéréotype. Que répond-elle ?",
   "choices": [
-    "Accélérer pour passer",
-    "S’arrêter sauf si c’est dangereux",
-    "Klaxonner et passer",
-    "Passer si aucun piéton n’est engagé"
-  ]
+    "C'est un fait qui est le plus souvent vrai",
+    "C'est quand on parle mal des gens",
+    "C'est une opinion qui peut conduire à des discriminations"
+  ],
+  "nextQuestions": {
+    "A": "question2A",
+    "B": "question2B",
+    "C": "question2C"
+  }
 }

@@ -1,10 +1,15 @@
 {
-  "index": "3",
-  "question": "Quel est l’équipement obligatoire pour un deux-roues motorisé ?",
+  "id": "question3",
+  "context": "Mya et Yanis voient une publicité montrant une femme en cuisine. Mya trouve que c'est un stéréotype.",
+  "question": "Pourquoi voit-on toujours des femmes sur les affiches de cuisine selon Yanis ?",
   "choices": [
-    "Un GPS",
-    "Un casque homologué",
-    "Des gants de ski",
-    "Une caméra"
-  ]
+    "Ce sont de vieux stéréotypes misogynes qui veulent faire croire que la cuisine est 'une tâche réservée' aux femmes",
+    "Elles sont bien meilleures que les hommes dans ce domaine",
+    "Des études sociologiques ont montré que les femmes s'intéressent plus à la cuisine"
+  ],
+  "nextQuestions": {
+    "A": "question4A",
+    "B": "question4B",
+    "C": "question4C"
+  }
 }

@@ -1,0 +1,15 @@
+{
+  "id": "question2A",
+  "context": "Mya a d'abord dit qu'un stéréotype était un fait souvent vrai, mais se corrige.",
+  "question": "Comment Mya corrige-t-elle sa réponse ?",
+  "choices": [
+    "Elle maintient sa première réponse",
+    "Elle dit que c'est plutôt une opinion qui peut conduire à des discriminations",
+    "Elle change complètement de sujet"
+  ],
+  "nextQuestions": {
+    "A": "question3",
+    "B": "question3",
+    "C": "question3"
+  }
+}

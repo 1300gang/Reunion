@@ -1,0 +1,15 @@
+{
+  "id": "question10B",
+  "context": "Mya fait un câlin à Yanis sans clarifier son consentement.",
+  "question": "Comment Yanis réagit-il ?",
+  "choices": [
+    "Il apprécie le geste",
+    "Il dit 'Ça va pas ou quoi ? J'ai pas dit oui !'",
+    "Il ne dit rien"
+  ],
+  "nextQuestions": {
+    "A": "question11",
+    "B": "question11",
+    "C": "question11"
+  }
+}

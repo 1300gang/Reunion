@@ -1,0 +1,15 @@
+{
+  "id": "question2B",
+  "context": "Mya a dit qu'un stéréotype c'est quand on parle mal des gens, mais Yanis doute.",
+  "question": "Comment Mya corrige-t-elle sa réponse ?",
+  "choices": [
+    "Elle maintient sa première réponse",
+    "Elle dit que c'est plutôt une opinion qui peut conduire à des discriminations",
+    "Elle change complètement de sujet"
+  ],
+  "nextQuestions": {
+    "A": "question3",
+    "B": "question3",
+    "C": "question3"
+  }
+}

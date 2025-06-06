@@ -1,0 +1,15 @@
+{
+  "id": "question9",
+  "context": "Après leur discussion, Mya propose un câlin à Yanis qui répond 'MDR'.",
+  "question": "Comment Mya devrait-elle réagir face à cette réponse ambiguë ?",
+  "choices": [
+    "Lui redemander pour clarifier sa réponse",
+    "Lui faire un câlin directement",
+    "Ne pas lui en faire"
+  ],
+  "nextQuestions": {
+    "A": "question10A",
+    "B": "question10B",
+    "C": "question10C"
+  }
+}

@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Téléchargeur Questions JSON</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .info {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border-left: 4px solid #4CAF50;
+        }
+        button {
+            background: linear-gradient(45deg, #4CAF50, #45a049);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            border-radius: 25px;
+            cursor: pointer;
+            display: block;
+            margin: 20px auto;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+        button:disabled {
+            background: #666;
+            cursor: not-allowed;
+            transform: none;
+        }
+        .file-list {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        .file-item {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+        .file-item:last-child {
+            border-bottom: none;
+        }
+        .status {
+            text-align: center;
+            margin: 20px 0;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📚 Questions Scénario</h1>
+        
+        <div class="info">
+            <h3>📋 Contenu du ZIP</h3>
+            <p>Ce téléchargement contient <strong>20 fichiers JSON</strong> représentant toutes les questions du scénario éducatif sur les stéréotypes et discriminations.</p>
+        </div>
+
+        <button id="downloadBtn" onclick="generateZip()">
+            📥 Télécharger le ZIP
+        </button>
+
+        <div class="status" id="status"></div>
+
+        <div class="file-list">
+            <h3>📁 Fichiers inclus :</h3>
+            <div class="file-item">📄 question1.json - Définition des stéréotypes</div>
+            <div class="file-item">📄 question2A.json - Correction (fait souvent vrai)</div>
+            <div class="file-item">📄 question2B.json - Correction (parler mal)</div>
+            <div class="file-item">📄 question2C.json - Confirmation (bonne réponse)</div>
+            <div class="file-item">📄 question3.json - Publicité sexiste</div>
+            <div class="file-item">📄 question4A.json - Réaction positive</div>
+            <div class="file-item">📄 question4B.json - Stéréotype capacité</div>
+            <div class="file-item">📄 question4C.json - Pseudo-études</div>
+            <div class="file-item">📄 question5.json - Discrimination vestimentaire</div>
+            <div class="file-item">📄 question6A.json - Malentendu supposé</div>
+            <div class="file-item">📄 question6B.json - Justification physique</div>
+            <div class="file-item">📄 question6C.json - Bonne compréhension</div>
+            <div class="file-item">📄 question7.json - Réaction aux pleurs</div>
+            <div class="file-item">📄 question8A.json - Soutien bienveillant</div>
+            <div class="file-item">📄 question8B.json - Injonction masculine</div>
+            <div class="file-item">📄 question8C.json - Insulte homophobe</div>
+            <div class="file-item">📄 question9.json - Demande de câlin</div>
+            <div class="file-item">📄 question10A.json - Clarification</div>
+            <div class="file-item">📄 question10B.json - Action sans consentement</div>
+            <div class="file-item">📄 question10C.json - Respect du refus</div>
+            <div class="file-item">📄 question11.json - Message sur le consentement</div>
+        </div>
+    </div>
+
+    <script>
+        const questions = {
+            "question1": {
+                "id": "question1",
+                "context": "Mya et Yanis sortent du lycée et discutent de leur journée. Mya a eu cours sur les stéréotypes.",
+                "question": "Yanis demande à Mya ce qu'est un stéréotype. Que répond-elle ?",
+                "choices": [
+                    "C'est un fait qui est le plus souvent vrai",
+                    "C'est quand on parle mal des gens", 
+                    "C'est une opinion qui peut conduire à des discriminations"
+                ],
+                "nextQuestions": {
+                    "A": "question2A",
+                    "B": "question2B",
+                    "C": "question2C"
+                }
+            },
+            "question2A": {
+                "id": "question2A",
+                "context": "Mya a d'abord dit qu'un stéréotype était un fait souvent vrai, mais se corrige.",
+                "question": "Comment Mya corrige-t-elle sa réponse ?",
+                "choices": [
+                    "Elle maintient sa première réponse",
+                    "Elle dit que c'est plutôt une opinion qui peut conduire à des discriminations",
+                    "Elle change complètement de sujet"
+                ],
+                "nextQuestions": {
+                    "A": "question3",
+                    "B": "question3",
+                    "C": "question3"
+                }
+            },
+            "question2B": {
+                "id": "question2B",
+                "context": "Mya a dit qu'un stéréotype c'est quand on parle mal des gens, mais Yanis doute.",
+                "question": "Comment Mya corrige-t-elle sa réponse ?",
+                "choices": [
+                    "Elle maintient sa première réponse",
+                    "Elle dit que c'est plutôt une opinion qui peut conduire à des discriminations", 
+                    "Elle change complètement de sujet"
+                ],
+                "nextQuestions": {
+                    "A": "question3",
+                    "B": "question3",
+                    "C": "question3"
+                }
+            },
+            "question2C": {
+                "id": "question2C",
+                "context": "Mya a correctement défini un stéréotype comme une opinion qui peut conduire à des discriminations.",
+                "question": "Quelle est la réaction de Yanis ?",
+                "choices": [
+                    "Il conteste cette définition",
+                    "Il dit 'Ah oui c'est vrai !'",
+                    "Il ne répond pas"
+                ],
+                "nextQuestions": {
+                    "A": "question3",
+                    "B": "question3", 
+                    "C": "question3"
+                }
+            },
+            "question3": {
+                "id": "question3",
+                "context": "Mya et Yanis voient une publicité montrant une femme en cuisine. Mya trouve que c'est un stéréotype.",
+                "question": "Pourquoi voit-on toujours des femmes sur les affiches de cuisine selon Yanis ?",
+                "choices": [
+                    "Ce sont de vieux stéréotypes misogynes qui veulent faire croire que la cuisine est 'une tâche réservée' aux femmes",
+                    "Elles sont bien meilleures que les hommes dans ce domaine",
+                    "Des études sociologiques ont montré que les femmes s'intéressent plus à la cuisine"
+                ],
+                "nextQuestions": {
+                    "A": "question4A",
+                    "B": "question4B", 
+                    "C": "question4C"
+                }
+            },
+            "question4A": {
+                "id": "question4A",
+                "context": "Yanis a identifié correctement les stéréotypes misogynes.",
+                "question": "Quelle est la réaction de Mya ?",
+                "choices": [
+                    "Elle le contredit",
+                    "Elle dit 'Exactement !'",
+                    "Elle ne répond pas"
+                ],
+                "nextQuestions": {
+                    "A": "question5",
+                    "B": "question5",
+                    "C": "question5"
+                }
+            },
+            "question4B": {
+                "id": "question4B",
+                "context": "Yanis pense que les femmes sont meilleures en cuisine.",
+                "question": "Comment Mya réagit-elle ?",
+                "choices": [
+                    "Elle est d'accord avec lui",
+                    "Elle dit 'N'importe quoi !' et explique pourquoi c'est un stéréotype misogyne",
+                    "Elle change de sujet"
+                ],
+                "nextQuestions": {
+                    "A": "question5",
+                    "B": "question5",
+                    "C": "question5"
+                }
+            },
+            "question4C": {
+                "id": "question4C",
+                "context": "Yanis évoque des études sociologiques sur l'intérêt des femmes pour la cuisine.",
+                "question": "Comment Mya réagit-elle ?",
+                "choices": [
+                    "Elle demande à voir l'étude et explique que c'est peut-être dû aux rôles imposés par la société",
+                    "Elle accepte cette explication",
+                    "Elle ignore sa remarque"
+                ],
+                "nextQuestions": {
+                    "A": "question5",
+                    "B": "question5", 
+                    "C": "question5"
+                }
+            },
+            "question5": {
+                "id": "question5",
+                "context": "Dans le bus, le conducteur fait une remarque déplacée à Mya sur sa tenue, alors que Yanis porte le même short.",
+                "question": "Pourquoi le conducteur fait-il la remarque à Mya et pas à Yanis ?",
+                "choices": [
+                    "Les règles vestimentaires sont les mêmes, Mya a mal compris",
+                    "Les garçons s'habillent plus large donc pas besoin de leur rappeler les règles",
+                    "Les filles sont plus surveillées sous prétexte qu'elles pourraient être victimes d'agression"
+                ],
+                "nextQuestions": {
+                    "A": "question6A",
+                    "B": "question6B",
+                    "C": "question6C"
+                }
+            },
+            "question6A": {
+                "id": "question6A",
+                "context": "Yanis pense que Mya a mal compris et que le conducteur voulait faire attention à elle.",
+                "question": "Comment Mya répond-elle ?",
+                "choices": [
+                    "Elle accepte cette explication",
+                    "Elle dit que c'est n'importe quoi et que les vêtements ne justifient pas une agression",
+                    "Elle ne répond pas"
+                ],
+                "nextQuestions": {
+                    "A": "question7",
+                    "B": "question7",
+                    "C": "question7"
+                }
+            },
+            "question6B": {
+                "id": "question6B",
+                "context": "Yanis explique que son short est plus large comme pour les garçons en général.",
+                "question": "Comment Mya réagit-elle ?",
+                "choices": [
+                    "Elle est d'accord avec cette logique",
+                    "Elle s'indigne et explique que les vêtements ne justifient pas une agression",
+                    "Elle reste silencieuse"
+                ],
+                "nextQuestions": {
+                    "A": "question7",
+                    "B": "question7",
+                    "C": "question7"
+                }
+            },
+            "question6C": {
+                "id": "question6C",
+                "context": "Yanis comprend que c'est injuste et que les vêtements ne justifient pas une agression.",
+                "question": "Quelle est la réaction de Mya ?",
+                "choices": [
+                    "Elle le contredit",
+                    "Elle dit 'Exactement !'", 
+                    "Elle ne répond pas"
+                ],
+                "nextQuestions": {
+                    "A": "question7",
+                    "B": "question7",
+                    "C": "question7"
+                }
+            },
+            "question7": {
+                "id": "question7",
+                "context": "Plus tard dans le bus, Yanis reçoit un message de rupture et se met à pleurer. Un petit garçon dit que les garçons ne pleurent pas.",
+                "question": "Comment Mya réagit-elle en voyant Yanis pleurer ?",
+                "choices": [
+                    "Est-ce que ça va ? Tu veux en parler ?",
+                    "Sois fort ! T'es un homme montre-le !",
+                    "Arrête de pleurer, ne fais pas ta tapette"
+                ],
+                "nextQuestions": {
+                    "A": "question8A",
+                    "B": "question8B",
+                    "C": "question8C"
+                }
+            },
+            "question8A": {
+                "id": "question8A",
+                "context": "Mya propose son soutien à Yanis de manière bienveillante.",
+                "question": "Comment Yanis réagit-il ?",
+                "choices": [
+                    "Il refuse de parler",
+                    "Il la remercie de ne pas réagir comme le petit garçon et explique sa situation",
+                    "Il se met en colère"
+                ],
+                "nextQuestions": {
+                    "A": "question9",
+                    "B": "question9",
+                    "C": "question9"
+                }
+            },
+            "question8B": {
+                "id": "question8B",
+                "context": "Mya dit à Yanis d'être fort car c'est un homme.",
+                "question": "Comment Yanis réagit-il ?",
+                "choices": [
+                    "Il accepte ce conseil",
+                    "Il dit qu'elle le saoule et remet en question ces stéréotypes sur la virilité",
+                    "Il arrête de pleurer immédiatement"
+                ],
+                "nextQuestions": {
+                    "A": "question9",
+                    "B": "question9", 
+                    "C": "question9"
+                }
+            },
+            "question8C": {
+                "id": "question8C",
+                "context": "Mya utilise une insulte homophobe en disant à Yanis d'arrêter de 'faire sa tapette'.",
+                "question": "Comment Yanis réagit-il ?",
+                "choices": [
+                    "Il accepte cette remarque",
+                    "Il s'indigne et explique que c'est une insulte homophobe et que la tristesse concerne tout le monde",
+                    "Il ignore la remarque"
+                ],
+                "nextQuestions": {
+                    "A": "question9",
+                    "B": "question9",
+                    "C": "question9"
+                }
+            },
+            "question9": {
+                "id": "question9",
+                "context": "Après leur discussion, Mya propose un câlin à Yanis qui répond 'MDR'.",
+                "question": "Comment Mya devrait-elle réagir face à cette réponse ambiguë ?",
+                "choices": [
+                    "Lui redemander pour clarifier sa réponse",
+                    "Lui faire un câlin directement",
+                    "Ne pas lui en faire"
+                ],
+                "nextQuestions": {
+                    "A": "question10A",
+                    "B": "question10B",
+                    "C": "question10C"
+                }
+            },
+            "question10A": {
+                "id": "question10A",
+                "context": "Mya demande des clarifications sur la réponse de Yanis.",
+                "question": "Que se passe-t-il quand Mya demande à Yanis d'être plus clair ?",
+                "choices": [
+                    "Il se met en colère",
+                    "Il explique qu'il n'a pas envie mais ne voulait pas la vexer",
+                    "Il accepte finalement le câlin"
+                ],
+                "nextQuestions": {
+                    "A": "question11",
+                    "B": "question11",
+                    "C": "question11"
+                }
+            },
+            "question10B": {
+                "id": "question10B",
+                "context": "Mya fait un câlin à Yanis sans clarifier son consentement.",
+                "question": "Comment Yanis réagit-il ?",
+                "choices": [
+                    "Il apprécie le geste",
+                    "Il dit 'Ça va pas ou quoi ? J'ai pas dit oui !'",
+                    "Il ne dit rien"
+                ],
+                "nextQuestions": {
+                    "A": "question11",
+                    "B": "question11",
+                    "C": "question11"
+                }
+            },
+            "question10C": {
+                "id": "question10C",
+                "context": "Mya clarifie que Yanis ne veut pas de câlin.",
+                "question": "Comment Yanis confirme-t-il ?",
+                "choices": [
+                    "Il change d'avis",
+                    "Il confirme qu'il n'a pas envie",
+                    "Il ne répond pas clairement"
+                ],
+                "nextQuestions": {
+                    "A": "question11",
+                    "B": "question11",
+                    "C": "question11"
+                }
+            },
+            "question11": {
+                "id": "question11",
+                "context": "Yanis explique qu'il n'est pas toujours facile pour un garçon de dire non car on valorise l'idée qu'ils ont toujours envie.",
+                "question": "Quel message principal Yanis veut-il faire passer ?",
+                "choices": [
+                    "Les garçons sont plus forts que les filles",
+                    "Les garçons aussi ont le droit de ne pas avoir envie et doivent donner leur consentement",
+                    "Les filles ne comprennent pas les garçons"
+                ],
+                "nextQuestions": {}
+            }
+        };
+
+        function generateZip() {
+            const btn = document.getElementById('downloadBtn');
+            const status = document.getElementById('status');
+            
+            btn.disabled = true;
+            btn.textContent = '⏳ Génération en cours...';
+            status.textContent = 'Création du fichier ZIP...';
+            
+            const zip = new JSZip();
+            
+            // Ajouter chaque question comme fichier JSON séparé
+            Object.keys(questions).forEach(questionId => {
+                const questionData = questions[questionId];
+                zip.file(`${questionId}.json`, JSON.stringify(questionData, null, 2));
+            });
+            
+            // Générer et télécharger le ZIP
+            zip.generateAsync({type: "blob"}).then(function(content) {
+                const link = document.createElement('a');
+                link.href = URL.createObjectURL(content);
+                link.download = 'questions_scenario_stereotypes.zip';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                
+                btn.disabled = false;
+                btn.textContent = '✅ Téléchargement terminé !';
+                status.textContent = 'ZIP téléchargé avec succès !';
+                
+                setTimeout(() => {
+                    btn.textContent = '📥 Télécharger le ZIP';
+                    status.textContent = '';
+                }, 3000);
+            });
+        }
+    </script>
+</body>
+</html>

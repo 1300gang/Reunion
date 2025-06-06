@@ -1,0 +1,15 @@
+{
+  "id": "question4A",
+  "context": "Yanis a identifié correctement les stéréotypes misogynes.",
+  "question": "Quelle est la réaction de Mya ?",
+  "choices": [
+    "Elle le contredit",
+    "Elle dit 'Exactement !'",
+    "Elle ne répond pas"
+  ],
+  "nextQuestions": {
+    "A": "question5",
+    "B": "question5",
+    "C": "question5"
+  }
+}

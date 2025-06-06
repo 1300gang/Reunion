@@ -1,0 +1,15 @@
+{
+  "id": "question7",
+  "context": "Plus tard dans le bus, Yanis reçoit un message de rupture et se met à pleurer. Un petit garçon dit que les garçons ne pleurent pas.",
+  "question": "Comment Mya réagit-elle en voyant Yanis pleurer ?",
+  "choices": [
+    "Est-ce que ça va ? Tu veux en parler ?",
+    "Sois fort ! T'es un homme montre-le !",
+    "Arrête de pleurer, ne fais pas ta tapette"
+  ],
+  "nextQuestions": {
+    "A": "question8A",
+    "B": "question8B",
+    "C": "question8C"
+  }
+}

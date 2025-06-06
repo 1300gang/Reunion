@@ -1,0 +1,15 @@
+{
+  "id": "question8B",
+  "context": "Mya dit à Yanis d'être fort car c'est un homme.",
+  "question": "Comment Yanis réagit-il ?",
+  "choices": [
+    "Il accepte ce conseil",
+    "Il dit qu'elle le saoule et remet en question ces stéréotypes sur la virilité",
+    "Il arrête de pleurer immédiatement"
+  ],
+  "nextQuestions": {
+    "A": "question9",
+    "B": "question9",
+    "C": "question9"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "id": "question4BBB",
+  "question": "Parfait ! Dernière question : Quelle est la distance de sécurité recommandée sur autoroute ?",
+  "choices": [
+    "1 seconde avec le véhicule devant",
+    "2 secondes avec le véhicule devant", 
+    "3 secondes avec le véhicule devant",
+    "Ça dépend de la météo"
+  ]
+}

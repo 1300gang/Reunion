@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jeu Questions Ramifiées</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Écran de sélection du mode -->
+  <div id="home-screen" class="screen active">
+    <h1>🎮 Jeu Questions Ramifiées</h1>
+    <div>
+      <button id="gm-mode-btn" class="button">👨‍💼 Mode Maître du Jeu</button>
+      <button id="player-mode-btn" class="button">👤 Mode Joueur</button>
+    </div>
+  </div>
+
+  <!-- Écran Maître du Jeu -->
+  <div id="gm-screen" class="screen">
+    <h1>👨‍💼 Maître du Jeu</h1>
+    
+    <div id="lobby-creation">
+      <label>Nom du lobby : <input id="lobbyNameInput" placeholder="Mon Lobby" /></label>
+      <button id="createLobbyBtn" class="button">Créer le lobby</button>
+    </div>
+    
+    <div id="lobby-management" style="display:none;">
+      <div class="status">
+        <p>📋 Lobby créé ! Partagez ce lien :</p>
+        <p><strong id="playerLink"></strong></p>
+        <button id="copyLinkBtn" class="button">📋 Copier le lien</button>
+        
+        <!-- QR Code Section -->
+        <div class="qr-section">
+          <h3>📱 QR Code pour accès rapide :</h3>
+          <div id="qrcode"></div>
+          <p class="qr-help">Les joueurs peuvent scanner ce QR code avec leur téléphone</p>
+        </div>
+      </div>
+      
+      <div class="players-list">
+        <h3>👥 Joueurs connectés :</h3>
+        <div id="playersList"></div>
+        <div class="player-count">
+          <span id="playerCount">0</span> joueur(s) connecté(s)
+          <span id="minimumWarning" class="warning" style="display:none;">
+            ⚠️ Minimum 2 joueurs requis pour démarrer
+          </span>
+        </div>
+      </div>
+      
+      <button id="startGameBtn" class="button" disabled>🚀 Démarrer la partie</button>
+      
+      <div id="game-control" style="display:none;">
+        <h3>🎯 Contrôle de la partie</h3>
+        
+        <div class="answers-log">
+          <h4>📝 Réponses reçues :</h4>
+          <div id="answersLog"></div>
+        </div>
+        
+        <div id="voteStats" class="vote-bar"></div>
+        
+        <div id="nextQuestionOptions" class="next-options" style="display:none;">
+          <h4>🔄 Choisir la prochaine question :</h4>
+          <div id="nextOptionsContainer"></div>
+        </div>
+        
+        <button id="endGameBtn" class="button danger">🏁 Terminer la partie</button>
+        <button id="generateCsvBtn" class="button">📊 Générer le CSV</button>
+        <a id="csvDownloadLink" style="display:none;" class="button">📄 Télécharger les résultats</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Écran Joueur -->
+  <div id="player-screen" class="screen">
+    <div id="player-join">
+      <h1>👤 Mode Joueur</h1>
+      <label>Votre prénom : <input id="playerNameInput" placeholder="Votre prénom" /></label>
+      <label>Code du lobby : <input id="lobbyCodeInput" placeholder="Code du lobby" /></label>
+      <button id="joinLobbyBtn" class="button">🔗 Rejoindre</button>
+    </div>
+    
+    <div id="player-waiting" style="display:none;">
+      <h2>⏳ En attente...</h2>
+      <p>En attente du début de la partie...</p>
+    </div>
+    
+    <div id="player-game" style="display:none;">
+
+    <!-- Nouveau : Affichage du contexte -->
+    <div id="questionContext" class="question-context" style="display:none;"></div>
+
+    <h2 id="questionTitle">Question</h2>
+    
+    
+    <div id="questionChoices"></div>
+    <p id="playerStatus"></p>
+    <div id="playerVoteStats" class="vote-bar"></div>
+    </div>
+    
+    <div id="player-game-over" style="display:none;">
+      <h2>🎉 Partie terminée !</h2>
+      <p>Merci d'avoir participé !</p>
+      <button id="backToHomeBtn" class="button">🏠 Retour à l'accueil</button>
+    </div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

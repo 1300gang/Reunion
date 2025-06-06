@@ -1,0 +1,15 @@
+{
+  "id": "question10C",
+  "context": "Mya clarifie que Yanis ne veut pas de câlin.",
+  "question": "Comment Yanis confirme-t-il ?",
+  "choices": [
+    "Il change d'avis",
+    "Il confirme qu'il n'a pas envie",
+    "Il ne répond pas clairement"
+  ],
+  "nextQuestions": {
+    "A": "question11",
+    "B": "question11",
+    "C": "question11"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "question10A",
+  "context": "Mya demande des clarifications sur la réponse de Yanis.",
+  "question": "Que se passe-t-il quand Mya demande à Yanis d'être plus clair ?",
+  "choices": [
+    "Il se met en colère",
+    "Il explique qu'il n'a pas envie mais ne voulait pas la vexer",
+    "Il accepte finalement le câlin"
+  ],
+  "nextQuestions": {
+    "A": "question11",
+    "B": "question11",
+    "C": "question11"
+  }
+}

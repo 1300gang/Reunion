@@ -1,0 +1,15 @@
+{
+  "id": "question5",
+  "context": "Dans le bus, le conducteur fait une remarque déplacée à Mya sur sa tenue, alors que Yanis porte le même short.",
+  "question": "Pourquoi le conducteur fait-il la remarque à Mya et pas à Yanis ?",
+  "choices": [
+    "Les règles vestimentaires sont les mêmes, Mya a mal compris",
+    "Les garçons s'habillent plus large donc pas besoin de leur rappeler les règles",
+    "Les filles sont plus surveillées sous prétexte qu'elles pourraient être victimes d'agression"
+  ],
+  "nextQuestions": {
+    "A": "question6A",
+    "B": "question6B",
+    "C": "question6C"
+  }
+}

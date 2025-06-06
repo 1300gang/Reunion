@@ -1,0 +1,15 @@
+{
+  "id": "question8C",
+  "context": "Mya utilise une insulte homophobe en disant à Yanis d'arrêter de 'faire sa tapette'.",
+  "question": "Comment Yanis réagit-il ?",
+  "choices": [
+    "Il accepte cette remarque",
+    "Il s'indigne et explique que c'est une insulte homophobe et que la tristesse concerne tout le monde",
+    "Il ignore la remarque"
+  ],
+  "nextQuestions": {
+    "A": "question9",
+    "B": "question9",
+    "C": "question9"
+  }
+}
