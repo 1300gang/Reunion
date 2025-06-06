@@ -1,0 +1,16 @@
+{
+  "id": "question3BB",
+  "question": "Excellent ! Vous êtes un conducteur exemplaire. Dans un rond-point, qui a la priorité ?",
+  "choices": [
+    "Celui qui arrive de droite",
+    "Celui qui est déjà dans le rond-point",
+    "Le premier arrivé",
+    "Les véhicules les plus gros"
+  ],
+  "nextQuestions": {
+    "A": "question4BBA",
+    "B": "question4BBB",
+    "C": "question4BBC",
+    "D": "question4BBD"
+  }
+}

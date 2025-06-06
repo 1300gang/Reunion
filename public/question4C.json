@@ -1,0 +1,15 @@
+{
+  "id": "question4C",
+  "context": "Yanis évoque des études sociologiques sur l'intérêt des femmes pour la cuisine.",
+  "question": "Comment Mya réagit-elle ?",
+  "choices": [
+    "Elle demande à voir l'étude et explique que c'est peut-être dû aux rôles imposés par la société",
+    "Elle accepte cette explication",
+    "Elle ignore sa remarque"
+  ],
+  "nextQuestions": {
+    "A": "question5",
+    "B": "question5",
+    "C": "question5"
+  }
+}

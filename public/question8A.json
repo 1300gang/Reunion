@@ -1,0 +1,15 @@
+{
+  "id": "question8A",
+  "context": "Mya propose son soutien à Yanis de manière bienveillante.",
+  "question": "Comment Yanis réagit-il ?",
+  "choices": [
+    "Il refuse de parler",
+    "Il la remercie de ne pas réagir comme le petit garçon et explique sa situation",
+    "Il se met en colère"
+  ],
+  "nextQuestions": {
+    "A": "question9",
+    "B": "question9",
+    "C": "question9"
+  }
+}

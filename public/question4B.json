@@ -1,0 +1,15 @@
+{
+  "id": "question4B",
+  "context": "Yanis pense que les femmes sont meilleures en cuisine.",
+  "question": "Comment Mya réagit-elle ?",
+  "choices": [
+    "Elle est d'accord avec lui",
+    "Elle dit 'N'importe quoi !' et explique pourquoi c'est un stéréotype misogyne",
+    "Elle change de sujet"
+  ],
+  "nextQuestions": {
+    "A": "question5",
+    "B": "question5",
+    "C": "question5"
+  }
+}

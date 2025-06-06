@@ -1,0 +1,15 @@
+{
+  "id": "question2C",
+  "context": "Mya a correctement défini un stéréotype comme une opinion qui peut conduire à des discriminations.",
+  "question": "Quelle est la réaction de Yanis ?",
+  "choices": [
+    "Il conteste cette définition",
+    "Il dit 'Ah oui c'est vrai !'",
+    "Il ne répond pas"
+  ],
+  "nextQuestions": {
+    "A": "question3",
+    "B": "question3",
+    "C": "question3"
+  }
+}

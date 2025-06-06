@@ -1,0 +1,15 @@
+{
+  "id": "question1",
+  "context": "Mya et Yanis sortent du lycée et discutent de leur journée. Mya a eu cours sur les stéréotypes.",
+  "question": "Yanis demande à Mya ce qu'est un stéréotype. Que répond-elle ?",
+  "choices": [
+    "C'est un fait qui est le plus souvent vrai",
+    "C'est quand on parle mal des gens",
+    "C'est une opinion qui peut conduire à des discriminations"
+  ],
+  "nextQuestions": {
+    "A": "question2A",
+    "B": "question2B",
+    "C": "question2C"
+  }
+}

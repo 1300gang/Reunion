@@ -1,0 +1,15 @@
+{
+  "id": "question6B",
+  "context": "Yanis explique que son short est plus large comme pour les garçons en général.",
+  "question": "Comment Mya réagit-elle ?",
+  "choices": [
+    "Elle est d'accord avec cette logique",
+    "Elle s'indigne et explique que les vêtements ne justifient pas une agression",
+    "Elle reste silencieuse"
+  ],
+  "nextQuestions": {
+    "A": "question7",
+    "B": "question7",
+    "C": "question7"
+  }
+}

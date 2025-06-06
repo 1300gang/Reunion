@@ -1,0 +1,11 @@
+{
+  "id": "question11",
+  "context": "Yanis explique qu'il n'est pas toujours facile pour un garçon de dire non car on valorise l'idée qu'ils ont toujours envie.",
+  "question": "Quel message principal Yanis veut-il faire passer ?",
+  "choices": [
+    "Les garçons sont plus forts que les filles",
+    "Les garçons aussi ont le droit de ne pas avoir envie et doivent donner leur consentement",
+    "Les filles ne comprennent pas les garçons"
+  ],
+  "nextQuestions": {}
+}

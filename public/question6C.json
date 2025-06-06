@@ -1,0 +1,15 @@
+{
+  "id": "question6C",
+  "context": "Yanis comprend que c'est injuste et que les vêtements ne justifient pas une agression.",
+  "question": "Quelle est la réaction de Mya ?",
+  "choices": [
+    "Elle le contredit",
+    "Elle dit 'Exactement !'",
+    "Elle ne répond pas"
+  ],
+  "nextQuestions": {
+    "A": "question7",
+    "B": "question7",
+    "C": "question7"
+  }
+}
